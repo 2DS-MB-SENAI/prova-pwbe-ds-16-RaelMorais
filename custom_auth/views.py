@@ -31,12 +31,12 @@ def create_user_credentials(request):
         return Response({'Erro': f'Username {username} já existe'}, status=status.HTTP_400_BAD_REQUEST)
     
     password = str(password)
-    password_regex = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+    # password_regex = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
 
-    if not re.match(password_regex, password):
-        return Response({
-            'Erro': 'A senha deve ter pelo menos 8 caracteres, 1 letra maiúscula, 1 número e 1 caractere especial.'
-        }, status=status.HTTP_400_BAD_REQUEST)
+    # if not re.match(password_regex, password):
+    #     return Response({
+    #         'Erro': 'A senha deve ter pelo menos 8 caracteres, 1 letra maiúscula, 1 número e 1 caractere especial.'
+    #     }, status=status.HTTP_400_BAD_REQUEST)
 
     user = CustomUser.objects.create_user(
 
