@@ -70,5 +70,12 @@ def login_user(request):
         return Response({'Erro': 'Usuario ou/e senha incorreto'}, status=status.HTTP_401_UNAUTHORIZED)
     
 
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def show_user(request):
+    usuario = request.user 
+    serializer = CustomUserSerializer(usuario)
+    return Response(serializer.data)
     
 # Create your views here.
