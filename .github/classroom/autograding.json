@@ -109,7 +109,7 @@
     },
     {
       "name": "16. Teste POST Agendamento - Sucesso",
-      "run": "python manage.py shell -c \"from django.test import Client; import json; from django.utils import timezone; from agenda.models import Servico; Servico.objects.all().delete(); servico = Servico.objects.create(nome='Consulta', duracao=30, preco=200.00); data_futura = (timezone.now() + timezone.timedelta(days=1)).strftime('%Y-%m-%dT%H:%M:%SZ'); r = Client().post('/api/agendamentos/', json.dumps({'servico': servico.pk, 'data_hora': data_futura, 'cliente_nome': 'Maria', 'cliente_email': 'maria@teste.com'}), content_type='application/json'); print('PASS' if r.status_code == 201 and 'id' in str(r.content) else f'FAIL {r.content}')\"",
+      "run": "python manage.py shell -c \"from django.test import Client; import json; from django.utils import timezone; from agenda.models import Servico; Servico.objects.all().delete(); servico = Servico.objects.create(nome='Consulta', duracao=30, preco=200.00); data_futura = (timezone.now() + timezone.timedelta(days=1)).strftime('%Y-%m-%d'); r = Client().post('/api/agendamentos/', json.dumps({'servico': servico.pk, 'data_hora': data_futura, 'cliente_nome': 'Maria', 'cliente_email': 'maria@teste.com'}), content_type='application/json'); print('PASS' if r.status_code == 201 and 'id' in str(r.content) else f'FAIL {r.content}')\"",
       "output": "PASS",
       "timeout": 20,
       "points": 6
