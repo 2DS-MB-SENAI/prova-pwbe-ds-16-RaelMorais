@@ -8,6 +8,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from .models import CustomUser
 from .serializers import CustomUserSerializer
+import re
 
 
 
@@ -23,19 +24,26 @@ def create_user_credentials(request):
     address = request.data.get('address')
     birth_date = request.data.get('birth_date')
 
-    if not username or not password or not phone or not address or not birth_date:
+    if not username or not password or not phone:
         return Response({'Erro': 'Campos obrigatórios incompletos'}, status=status.HTTP_400_BAD_REQUEST) # rertornando status codes. 
     
     if CustomUser.objects.filter(username=username).exists():
         return Response({'Erro': f'Username {username} já existe'}, status=status.HTTP_400_BAD_REQUEST)
     
+    password = str(password)
+    password_regex = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+
+    if not re.match(password_regex, password):
+        return Response({
+            'Erro': 'A senha deve ter pelo menos 8 caracteres, 1 letra maiúscula, 1 número e 1 caractere especial.'
+        }, status=status.HTTP_400_BAD_REQUEST)
 
     user = CustomUser.objects.create_user(
 
         username=username,
         password=password,
         phone=phone,
-        adress = address, 
+        address = address, 
         birth_date = birth_date, 
 
     )
