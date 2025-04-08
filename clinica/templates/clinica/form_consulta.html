@@ -1,0 +1,22 @@
+<form method="POST">
+    {% csrf_token %}
+    <label for="{{ form.paciente.id_for_label }}">
+        {{ form.paciente }}
+    </label>
+    
+    <label for="{{ form.data.id_for_label }}">
+        {{ form.data }}
+    </label>
+    
+    
+    <label for="{{ form.medico.id_for_label }}">
+        {{ form.medico }}
+
+    </label>
+    
+    <label for="{{ form.status.id_for_label }}">
+        {{ form.status }}
+    </label>
+
+    <button type="submit">Salvar</button>
+</form>

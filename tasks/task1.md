@@ -27,12 +27,12 @@ Implementar uma aplicação Django seguindo o padrão Model-Template-View para g
 ### Views obrigatórias:
 1. `listar_medicos` - Lista todos os médicos cadastrados
 2. `criar_consulta` - Formulário para agendar nova consulta
-3. `detalhes_consulta` - Exibe informações de uma consulta específica
+3. `detalhes_consulta` - Exibe informações de uma consulta específica - faltou 
 
 ### URLs:
 - `/medicos/` → Listagem de médicos
 - `/consultas/nova/` → Agendamento
-- `/consultas/<int:id>/` → Detalhes da consulta
+- `/consultas/<int:id>/` → Detalhes da consulta - faltou 
 
 ## 🎨 Templates
 `Os templates devem ser colocados na pasta templates/clinica`
@@ -41,17 +41,17 @@ Implementar uma aplicação Django seguindo o padrão Model-Template-View para g
 
 1. `listar_medicos.html` - Deve mostrar:
    - Tabela com lista de médicos
-   - Filtro por especialidade
+   - Filtro por especialidade - faltou 
 
 2. `form_consulta.html` - Deve conter:
-   - Formulário com validação
-   - Mensagens de erro/sucesso
+   - Formulário com validação - faltou 
+   - Mensagens de erro/sucesso - faltou 
 
 ## ⚠️ Validações
 
 ### Para Médico:
-- CRM deve ter formato XX/XXXXX
-- Nome mínimo de 5 caracteres
+- CRM deve ter formato XX/XXXXX - faltou 
+- Nome mínimo de 5 caracteres - faltou 
 
 ### Para Consulta:
-- Não permitir agendamentos no passado
+- Não permitir agendamentos no passado - faltou 
